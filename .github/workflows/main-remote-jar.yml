@@ -28,7 +28,9 @@ jobs:
         run: mkdir -p ./libs
 
       - name: Download openai-code-review-sdk JAR
-        run: wget -O ./libs/openai-code-review-sdk-1.0.jar https://github.com/Moyu-Yunru/openai-code-review-log/releases/tag/v1.0/openai-code-review-sdk-1.0.jar
+        run: |
+          curl -fL --retry 3 --output ./libs/openai-code-review-sdk-1.0.jar https://github.com/Moyu-Yunru/openai-code-review-log/releases/download/v1.0/openai-code-review-sdk-1.0.jar
+          jar tf ./libs/openai-code-review-sdk-1.0.jar >/dev/null
 
       - name: Get repository name
         id: repo-name
